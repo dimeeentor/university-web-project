@@ -8,8 +8,7 @@ const questions = [
       { isCorrect: true, answer: "Interstellar" },
       { isCorrect: false, answer: "Dunkirk" },
     ],
-    isMultiple: false,
-    isInputModeActive: true,
+    type: "input",
   },
   {
     question:
@@ -20,8 +19,7 @@ const questions = [
       { isCorrect: true, answer: "Memento" },
       { isCorrect: false, answer: "Tenet" },
     ],
-    isMultiple: false,
-    isInputModeActive: true,
+    type: "single",
   },
   {
     question:
@@ -32,8 +30,7 @@ const questions = [
       { isCorrect: false, answer: "Guy Pearce" },
       { isCorrect: false, answer: "Leonardo DiCaprio" },
     ],
-    isMultiple: false,
-    isInputModeActive: false,
+    type: "input",
   },
   {
     question:
@@ -44,8 +41,7 @@ const questions = [
       { isCorrect: false, answer: "Interstellar" },
       { isCorrect: false, answer: "Tenet" },
     ],
-    isMultiple: true,
-    isInputModeActive: false,
+    type: "multiple",
   },
   {
     question:
@@ -56,8 +52,7 @@ const questions = [
       { isCorrect: true, answer: "Dunkirk" },
       { isCorrect: false, answer: "Interstellar" },
     ],
-    isMultiple: true,
-    isInputModeActive: false,
+    type: "single",
   },
   {
     question:
@@ -68,8 +63,7 @@ const questions = [
       { isCorrect: false, answer: "Christian Bale" },
       { isCorrect: false, answer: "Leonardo DiCaprio" },
     ],
-    isMultiple: false,
-    isInputModeActive: false,
+    type: "input",
   },
   {
     question:
@@ -80,8 +74,7 @@ const questions = [
       { isCorrect: false, answer: "Memento" },
       { isCorrect: false, answer: "The Dark Knight" },
     ],
-    isMultiple: false,
-    isInputModeActive: false,
+    type: "input",
   },
   {
     question:
@@ -92,8 +85,7 @@ const questions = [
       { isCorrect: false, answer: "Predestination" },
       { isCorrect: false, answer: "The Batman (2022)" },
     ],
-    isMultiple: false,
-    isInputModeActive: false,
+    type: "input",
   },
   {
     question:
@@ -104,8 +96,7 @@ const questions = [
       { isCorrect: false, answer: "The Spierig Brothers" },
       { isCorrect: false, answer: "Matt Reeves" },
     ],
-    isMultiple: true,
-    isInputModeActive: false,
+    type: "single",
   },
   {
     question:
@@ -116,15 +107,23 @@ const questions = [
       { isCorrect: true, answer: "Predestination" },
       { isCorrect: false, answer: "Interstellar" },
     ],
-    isMultiple: false,
-    isInputModeActive: true,
+    type: "single",
+  },
+  {
+    question: "Which of the following films are directed by Christopher Nolan?",
+    answers: [
+      { isCorrect: true, answer: "Inception" },
+      { isCorrect: true, answer: "Interstellar" },
+      { isCorrect: true, answer: "Dunkirk" },
+      { isCorrect: true, answer: "Memento" },
+    ],
+    type: "multiple",
   },
 ];
 
 const changeFontBtn = document.getElementById("change-font-size");
 
 const currentQuestion = document.querySelector(".current-question");
-const questionIndex = document.getElementById("question-index");
 const question = document.getElementById("question");
 const score = document.getElementById("score");
 
@@ -139,8 +138,8 @@ let scoreNumber = 0;
 
 checkBtn.addEventListener("click", () => doNextQuestion());
 
-answerInput.addEventListener("keyup", ({ key }) => {
-  if (key === "Enter") doNextQuestion();
+answerInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") doNextQuestion();
 });
 
 changeFontBtn.addEventListener("click", () => doChooseFontSize());
@@ -150,19 +149,21 @@ window.addEventListener("DOMContentLoaded", () => {
   doShowQuestion(currentQuestionIndex);
 });
 
-// TODO – Re-write logic for verifying answers
 function doNextQuestion() {
-  const result = doCheckAnswer();
+  const currentQuestion = questions[currentQuestionIndex];
+  const result = doCheckAnswer(currentQuestion.type);
+
+  doAddProperClass(result);
+  doRemoveProperClass(600);
+
   switch (result) {
     case true:
       score.textContent = `Score: ${++scoreNumber}`;
       doIncrementQuestionIndex();
-      doShowQuestion(currentQuestionIndex);
-      break;
+      return doShowQuestion(currentQuestionIndex);
     case false:
       doIncrementQuestionIndex();
-      doShowQuestion(currentQuestionIndex);
-      break;
+      return doShowQuestion(currentQuestionIndex);
   }
 }
 
@@ -172,19 +173,10 @@ function doCheckAnswer(type) {
       return doCheckMultipleAnswers();
     case "input":
       return doCheckInputAnswer();
-    case "single":
-      return doCheckSingleAnswer();
     default:
-      // alert("Please select/enter correct answer.")
       return doCheckSingleAnswer();
   }
 }
-// ---------------------------------------------------------------
-
-// TODO – Re-write logic for verifying answers
-// Single – Check if the selected answer is correct / nothing has been selected.
-// Multiple – Check if all selected answers are correct / nothing has been selected.
-// Input – Check if the input value is correct / nothing has been entered.
 
 function doCheckMultipleAnswers() {
   const checkedCheckboxes = document.querySelectorAll(
@@ -195,10 +187,6 @@ function doCheckMultipleAnswers() {
     (answer) => answer.isCorrect,
   );
   const isCorrect = selectedAnswers.length === correctAnswers.length;
-
-  doAddProperClass(isCorrect);
-  doRemoveProperClass(600);
-
   checkedCheckboxes.forEach((el) => (el.checked = false));
 
   return isCorrect;
@@ -212,26 +200,21 @@ function doCheckSingleAnswer() {
   )[0].answer;
   const isCorrect = correctAnswer === selectedAnswer;
 
-  doAddProperClass(isCorrect);
-  doRemoveProperClass(600);
-
   if (checkedRadio) checkedRadio.checked = false;
 
   return isCorrect;
 }
 
 function doCheckInputAnswer() {
-  const possibleAnswer = answerInput.value.toLowerCase();
+  const possibleAnswer = answerInput.value.toLowerCase().trim();
   const correctAnswer = questions[currentQuestionIndex].answers
     .filter((answer) => answer.isCorrect)[0]
     .answer.toLowerCase();
-  const isEmpty = possibleAnswer === "";
+  const isCorrect = possibleAnswer === correctAnswer;
 
-  doAddProperClass(isCorrect);
-  doRemoveProperClass(600);
-  doActivateInputMode(false);
+  doAddProperStyles(false);
 
-  return isEmpty || correctAnswer === possibleAnswer;
+  return isCorrect;
 }
 
 function doIncrementQuestionIndex() {
@@ -258,7 +241,7 @@ function doRemoveProperClass(after) {
   }, after);
 }
 
-function doActivateInputMode(isActive) {
+function doAddProperStyles(isActive) {
   if (isActive) {
     answers.forEach((el) => el.classList.add("input-mode"));
     answerInput.style.padding = "0 12px";
@@ -279,18 +262,21 @@ function doShowQuestion(index) {
   const currentQuestion = questions[index];
   question.textContent = currentQuestion.question;
   questionIndex.textContent = `Question #${index + 1}`;
-  answers.forEach((answer, i) => {
-    answer.textContent = currentQuestion.answers[i].answer;
+  for (let i = 0; i < answers.length; i++) {
+    answers[i].textContent = currentQuestion.answers[i].answer;
     answerBtns[i].value = currentQuestion.answers[i].answer;
-    if (currentQuestion.isMultiple) {
-      answerBtns[i].type = "checkbox";
-    } else if (currentQuestion.isInputModeActive) {
-      doActivateInputMode(true);
-      answerBtns[i].type = "hidden";
-    } else {
-      answerBtns[i].type = "radio";
+    switch (currentQuestion.type) {
+      case "multiple":
+        answerBtns[i].type = "checkbox";
+        break;
+      case "input":
+        doAddProperStyles(true);
+        answerBtns[i].type = "hidden";
+        break;
+      default:
+        answerBtns[i].type = "radio";
     }
-  });
+  }
 }
 
 function doShuffleArray(array) {
