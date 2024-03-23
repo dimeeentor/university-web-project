@@ -119,178 +119,183 @@ const questions = [
     ],
     type: "multiple",
   },
-];
+]
 
-const changeFontBtn = document.getElementById("change-font-size");
+const changeFontBtn = document.getElementById("change-font-size")
 
-const currentQuestion = document.querySelector(".current-question");
-const question = document.getElementById("question");
-const score = document.getElementById("score");
+const currentQuestion = document.querySelector(".current-question")
+const question = document.getElementById("question")
+const score = document.getElementById("score")
 
-const answerBtns = document.querySelectorAll('input[name="answer"]');
-const answers = document.querySelectorAll(".answer");
+const answerBtns = document.querySelectorAll('input[name="answer"]')
+const answers = document.querySelectorAll(".answer")
 
-const answerInput = document.getElementById("answer-input");
-const checkBtn = document.getElementById("check-btn");
+const answerInput = document.getElementById("answer-input")
+const checkBtn = document.getElementById("check-btn")
 
-let currentQuestionIndex = 0;
-let scoreNumber = 0;
+let currentQuestionIndex = 0
+let scoreNumber = 0
 
-checkBtn.addEventListener("click", () => doNextQuestion());
+checkBtn.addEventListener("click", () => doNextQuestion())
 
 answerInput.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") doNextQuestion();
-});
+  if (e.key === "Enter") doNextQuestion()
+})
 
-changeFontBtn.addEventListener("click", () => doChooseFontSize());
+changeFontBtn.addEventListener("click", () => doChooseFontSize())
 
 window.addEventListener("DOMContentLoaded", () => {
-  doShuffleArray(questions);
-  doShowQuestion(currentQuestionIndex);
-});
+  doShuffleArray(questions)
+  doShowQuestion(currentQuestionIndex)
+})
 
 function doNextQuestion() {
-  const currentQuestion = questions[currentQuestionIndex];
-  const result = doCheckAnswer(currentQuestion.type);
+  const currentQuestion = questions[currentQuestionIndex]
+  const result = doCheckAnswer(currentQuestion.type)
+  const answerStatus = typeof result === "string" ? false : result
 
-  doAddProperClass(result);
-  doRemoveProperClass(600);
+  doAddProperClass(answerStatus)
+  doRemoveProperClass(600)
 
   switch (result) {
     case true:
-      score.textContent = `Score: ${++scoreNumber}`;
-      doIncrementQuestionIndex();
-      return doShowQuestion(currentQuestionIndex);
+      score.textContent = `Score: ${++scoreNumber}`
+      doIncrementQuestionIndex()
+      return doShowQuestion(currentQuestionIndex)
     case false:
-      doIncrementQuestionIndex();
-      return doShowQuestion(currentQuestionIndex);
+      doIncrementQuestionIndex()
+      return doShowQuestion(currentQuestionIndex)
+    case "empty":
+      return doShowQuestion(currentQuestionIndex)
   }
 }
 
 function doCheckAnswer(type) {
   switch (type) {
     case "multiple":
-      return doCheckMultipleAnswers();
+      return doCheckMultipleAnswers()
     case "input":
-      return doCheckInputAnswer();
-    default:
-      return doCheckSingleAnswer();
+      return doCheckInputAnswer()
+    case "single":
+      return doCheckSingleAnswer()
   }
 }
 
 function doCheckMultipleAnswers() {
-  const checkedCheckboxes = document.querySelectorAll(
-    'input[name="answer"]:checked',
-  );
-  const selectedAnswers = Array.from(checkedCheckboxes).map((el) => el.value);
+  const checkedCheckboxes = document.querySelectorAll('input[name="answer"]:checked')
+  const selectedAnswers = Array.from(checkedCheckboxes).map((el) => el.value)
   const correctAnswers = questions[currentQuestionIndex].answers.filter(
-    (answer) => answer.isCorrect,
-  );
-  const isCorrect = selectedAnswers.length === correctAnswers.length;
-  checkedCheckboxes.forEach((el) => (el.checked = false));
+    (answer) => answer.isCorrect
+  )
+  const isCorrect = selectedAnswers.length === correctAnswers.length
+  checkedCheckboxes.forEach((el) => (el.checked = false))
 
-  return isCorrect;
+  if (!checkedCheckboxes.length) return "empty"
+  else return isCorrect
 }
 
 function doCheckSingleAnswer() {
-  const checkedRadio = document.querySelector('input[name="answer"]:checked');
-  const selectedAnswer = checkedRadio?.value;
+  const checkedRadio = document.querySelector('input[name="answer"]:checked')
+  const selectedAnswer = checkedRadio?.value
   const correctAnswer = questions[currentQuestionIndex].answers.filter(
-    (answer) => answer.isCorrect,
-  )[0].answer;
-  const isCorrect = correctAnswer === selectedAnswer;
+    (answer) => answer.isCorrect
+  )[0].answer
+  const isCorrect = correctAnswer === selectedAnswer
 
-  if (checkedRadio) checkedRadio.checked = false;
-
-  return isCorrect;
+  if (!checkedRadio) return "empty"
+  else {
+    checkedRadio.checked = false
+    return isCorrect
+  }
 }
 
 function doCheckInputAnswer() {
-  const possibleAnswer = answerInput.value.toLowerCase().trim();
+  const possibleAnswer = answerInput.value.toLowerCase().trim()
   const correctAnswer = questions[currentQuestionIndex].answers
     .filter((answer) => answer.isCorrect)[0]
-    .answer.toLowerCase();
-  const isCorrect = possibleAnswer === correctAnswer;
+    .answer.toLowerCase()
+  const isCorrect = possibleAnswer === correctAnswer
 
-  doAddProperStyles(false);
+  doAddProperStyles(false)
 
-  return isCorrect;
+  if (!possibleAnswer) return "empty"
+  else return isCorrect
 }
 
 function doIncrementQuestionIndex() {
-  currentQuestionIndex++;
+  currentQuestionIndex++
   if (currentQuestionIndex === questions.length) {
-    currentQuestionIndex = 0;
-    scoreNumber = 0;
-    doShuffleArray(questions);
+    currentQuestionIndex = 0
+    scoreNumber = 0
+    doShuffleArray(questions)
   }
 }
 
 function doAddProperClass(isCorrect) {
   if (isCorrect) {
-    currentQuestion.classList.add("correct-answer");
+    currentQuestion.classList.add("correct-answer")
   } else {
-    currentQuestion.classList.add("incorrect-answer");
+    currentQuestion.classList.add("incorrect-answer")
   }
 }
 
 function doRemoveProperClass(after) {
   setTimeout(() => {
-    currentQuestion.classList.remove("correct-answer");
-    currentQuestion.classList.remove("incorrect-answer");
-  }, after);
+    currentQuestion.classList.remove("correct-answer")
+    currentQuestion.classList.remove("incorrect-answer")
+  }, after)
 }
 
 function doAddProperStyles(isActive) {
   if (isActive) {
-    answers.forEach((el) => el.classList.add("input-mode"));
-    answerInput.style.padding = "0 12px";
-    answerInput.style.width = "100%";
-    answerInput.style.opacity = "1";
-    answerInput.focus();
+    answers.forEach((el) => el.classList.add("input-mode"))
+    answerInput.style.padding = "0 12px"
+    answerInput.style.width = "100%"
+    answerInput.style.opacity = "1"
+    answerInput.focus()
   } else {
-    answers.forEach((el) => el.classList.remove("input-mode"));
-    answerInput.style.padding = "0";
-    answerInput.style.width = "0";
-    answerInput.style.opacity = "0";
-    answerInput.value = "";
-    answerInput.blur();
+    answers.forEach((el) => el.classList.remove("input-mode"))
+    answerInput.style.padding = "0"
+    answerInput.style.width = "0"
+    answerInput.style.opacity = "0"
+    answerInput.value = ""
+    answerInput.blur()
   }
 }
 
 function doShowQuestion(index) {
-  const currentQuestion = questions[index];
-  question.textContent = currentQuestion.question;
-  questionIndex.textContent = `Question #${index + 1}`;
+  const currentQuestion = questions[index]
+  question.textContent = currentQuestion.question
+  questionIndex.textContent = `Question #${index + 1}`
   for (let i = 0; i < answers.length; i++) {
-    answers[i].textContent = currentQuestion.answers[i].answer;
-    answerBtns[i].value = currentQuestion.answers[i].answer;
+    answers[i].textContent = currentQuestion.answers[i].answer
+    answerBtns[i].value = currentQuestion.answers[i].answer
     switch (currentQuestion.type) {
       case "multiple":
-        answerBtns[i].type = "checkbox";
-        break;
+        answerBtns[i].type = "checkbox"
+        break
       case "input":
-        doAddProperStyles(true);
-        answerBtns[i].type = "hidden";
-        break;
+        doAddProperStyles(true)
+        answerBtns[i].type = "hidden"
+        break
       default:
-        answerBtns[i].type = "radio";
+        answerBtns[i].type = "radio"
     }
   }
 }
 
 function doShuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
   }
-  return array;
+  return array
 }
 
 function doChooseFontSize() {
-  const selectedSize = prompt("Choose a font size: 9 – 18");
-  const parsedSize = parseInt(selectedSize);
+  const selectedSize = prompt("Choose a font size: 9 – 18")
+  const parsedSize = parseInt(selectedSize)
   if (parsedSize >= 9 && parsedSize <= 18) {
-    document.body.style.fontSize = `${parsedSize}px`;
+    document.body.style.fontSize = `${parsedSize}px`
   }
 }

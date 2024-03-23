@@ -157,9 +157,9 @@ footer {
 }
 
 .correct-answer {
-  box-shadow: 0 0px 60px rgba(52, 199, 89, 0.6);
+  box-shadow: 0 0 60px rgba(52, 199, 89, 0.6);
 }
 
 .incorrect-answer {
-  box-shadow: 0 0px 60px rgba(255, 59, 48, 0.6);
+  box-shadow: 0 0 60px rgba(255, 59, 48, 0.6);
 }
