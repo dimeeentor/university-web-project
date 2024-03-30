@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  accent-color: #131313;
 }
 
 html {
@@ -20,6 +19,7 @@ html {
     "Helvetica Neue",
     sans-serif;
   background-color: #fafafa;
+  accent-color: #131313;
 }
 
 header {
@@ -129,10 +129,10 @@ footer {
   cursor: pointer;
   background-color: #131313;
   transition: 0.3s ease;
-}
 
-.current-question #check-btn:hover {
-  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .input-mode::before {
@@ -160,4 +160,43 @@ footer {
 
 .incorrect-answer {
   box-shadow: 0 0 60px rgba(255, 59, 48, 0.6);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color: #fafafa;
+    color-scheme: dark;
+    accent-color: #999;
+    background-color: #131313;
+  }
+
+  header {
+    background-color: rgba(19, 19, 19, 0.85);
+    border-bottom-color: #333;
+  }
+
+  a {
+    color: #fafafa;
+  }
+
+  .current-question {
+    border-color: #555;
+    box-shadow: none;
+  }
+
+  #check-btn {
+    border: 1px solid #555 !important;
+  }
+
+  #answer-input:focus {
+    border: #555 dashed 0.5px;
+  }
+
+  .correct-answer {
+    box-shadow: 0 0 60px rgba(52, 199, 89, 0.6);
+  }
+
+  .incorrect-answer {
+    box-shadow: 0 0 60px rgba(255, 59, 48, 0.6);
+  }
 }
