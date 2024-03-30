@@ -4,19 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/quiz.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
     <title>Quiz</title>
   </head>
   <body>
     <header>
       <nav>
-        <ul>
-          <li><a href="./home.html">Home</a></li>
-          <li><a href="./quiz.html">Quiz</a></li>
-        </ul>
         <aside class="accessibility-font-size">
           <button type="button" id="change-font-size">
             <span>Font Size</span>
           </button>
+        </aside>
+        <ul>
+          <li><a href="./home.html">Home</a></li>
+          <li><a href="./quiz.html">Quiz</a></li>
+        </ul>
+        <aside class="theme-switcher">
+          <button class="light">Light</button>
+          <button class="dark">Dark</button>
+          <button class="auto active">Auto</button>
         </aside>
       </nav>
     </header>
@@ -28,7 +34,7 @@
         </h2>
         <div>
           <p id="question"></p>
-          <ol type="A">
+          <ol>
             <li>
               <label>
                 <input type="radio" name="answer" value="" />

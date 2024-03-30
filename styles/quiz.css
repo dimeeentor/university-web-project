@@ -1,77 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  height: 100dvh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #fafafa;
-  accent-color: #131313;
-  color-scheme: light;
-}
-
-header {
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  display: flex;
-  position: sticky;
-  top: 0;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 60px;
-  border-bottom: 0.5px solid #131313;
-  background-color: rgba(255, 255, 255, 0.85);
-}
-
-nav {
-  display: flex;
-  align-items: center;
-}
-
-.top-section {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.accessibility-font-size {
-  display: flex;
-  position: absolute;
-  right: 20px;
-  justify-content: space-between;
-}
-
-#change-font-size {
-  width: 108px;
-  padding: 8px 16px;
-  border: none;
-  color: #fff;
-  font-size: 13px;
-  cursor: pointer;
-  background-color: #333;
-}
-
-ul {
-  display: flex;
-  justify-content: space-between;
-  width: 200px;
-  list-style: none;
-}
-
-a {
-  opacity: 0.85;
-  color: #131313;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-a:hover {
-  opacity: 1;
-}
-
 li {
   list-style: none;
 }
@@ -95,6 +21,12 @@ li {
   border: 0.5px solid #131313;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 4px 0px;
   transition: 0.6s ease;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .current-question p {
@@ -137,11 +69,11 @@ footer {
   font-size: 14.5px;
   letter-spacing: 0.0125em;
   transition: all 0.6s ease;
-}
 
-#answer-input:focus {
-  border: #131313 dashed 0.5px;
-  outline: none;
+  &:focus {
+    border: #131313 dashed 0.5px;
+    outline: none;
+  }
 }
 
 .correct-answer {
@@ -150,43 +82,4 @@ footer {
 
 .incorrect-answer {
   box-shadow: 0 0 60px rgba(255, 59, 48, 0.6);
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color: #fafafa;
-    color-scheme: dark;
-    accent-color: #999;
-    background-color: #131313;
-  }
-
-  header {
-    background-color: rgba(19, 19, 19, 0.85);
-    border-bottom-color: #333;
-  }
-
-  a {
-    color: #fafafa;
-  }
-
-  .current-question {
-    border-color: #555;
-    box-shadow: none;
-  }
-
-  #check-btn {
-    border: 1px solid #555 !important;
-  }
-
-  #answer-input:focus {
-    border: #555 dashed 0.5px;
-  }
-
-  .correct-answer {
-    box-shadow: 0 0 60px rgba(52, 199, 89, 0.6);
-  }
-
-  .incorrect-answer {
-    box-shadow: 0 0 60px rgba(255, 59, 48, 0.6);
-  }
 }

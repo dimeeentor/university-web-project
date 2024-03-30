@@ -1,11 +1,17 @@
+import { doChooseFontSize, doChooseTheme } from "../scripts/utils.js"
+
 const changeFontBtn = document.getElementById("change-font-size")
+const themeBtns = document.querySelectorAll(".theme-switcher > button")
+const lightThemeBtn = document.querySelector(".light")
+const darkThemeBtn = document.querySelector(".dark")
+const autoThemeBtn = document.querySelector(".auto")
 
 changeFontBtn.addEventListener("click", () => doChooseFontSize())
 
-function doChooseFontSize() {
-  const selectedSize = prompt("Choose a font size: 9 – 18")
-  const parsedSize = parseInt(selectedSize)
-  if (parsedSize >= 9 && parsedSize <= 18) {
-    document.body.style.fontSize = `${parsedSize}px`
-  }
-}
+lightThemeBtn.addEventListener("click", () =>
+  doChooseTheme(themeBtns, lightThemeBtn)
+)
+
+darkThemeBtn.addEventListener("click", () => doChooseTheme(themeBtns, darkThemeBtn))
+
+autoThemeBtn.addEventListener("click", () => doChooseTheme(themeBtns, autoThemeBtn))
