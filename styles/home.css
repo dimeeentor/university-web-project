@@ -41,12 +41,6 @@ nav {
   align-items: center;
 }
 
-.top-section {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .accessibility-font-size {
   display: flex;
   position: absolute;
@@ -76,12 +70,45 @@ a {
   color: #131313;
   text-decoration: none;
   transition: 0.3s ease;
-}
 
-a:hover {
-  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 li {
   list-style: none;
+}
+
+.films {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 24px;
+  max-width: 1104px;
+  margin: 48px auto;
+}
+
+.film {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  border: 0.5px solid #131313;
+
+  p,
+  h2 {
+    margin-top: 12px;
+  }
+}
+
+.poster {
+  width: 100%;
+  height: 300px;
+  margin-top: 12px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
