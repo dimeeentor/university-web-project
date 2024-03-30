@@ -26,8 +26,6 @@ header {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   display: flex;
-  z-index: 999;
-  position: fixed;
   position: sticky;
   top: 0;
   justify-content: center;

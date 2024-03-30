@@ -138,8 +138,8 @@ let scoreNumber = 0
 
 checkBtn.addEventListener("click", () => doNextQuestion())
 
-answerInput.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") doNextQuestion()
+answerInput.addEventListener("keyup", ({ key }) => {
+  if (key === "Enter") doNextQuestion()
 })
 
 changeFontBtn.addEventListener("click", () => doChooseFontSize())
@@ -225,8 +225,10 @@ function doCheckInputAnswer() {
 function doIncrementQuestionIndex() {
   currentQuestionIndex++
   if (currentQuestionIndex === questions.length) {
+    alert(`Quiz is over! Your score is: ${scoreNumber}/${questions.length}`)
     currentQuestionIndex = 0
     scoreNumber = 0
+    score.textContent = "Score: 0"
     doShuffleArray(questions)
   }
 }
@@ -275,10 +277,10 @@ function doShowQuestion(index) {
         answerBtns[i].type = "checkbox"
         break
       case "input":
-        doAddProperStyles(true)
         answerBtns[i].type = "hidden"
+        doAddProperStyles(true)
         break
-      default:
+      case "single":
         answerBtns[i].type = "radio"
     }
   }
