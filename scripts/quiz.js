@@ -1,4 +1,4 @@
-import { doChooseFontSize, doChooseTheme } from "./utils.js"
+import { doChooseFontSize, doChooseTheme, doShuffleArray } from "./utils.js"
 import { questions } from "./questions.js"
 
 const changeFontBtn = document.getElementById("change-font-size")
@@ -28,17 +28,13 @@ answerInput.addEventListener("keyup", ({ key }) => {
 
 changeFontBtn.addEventListener("click", () => doChooseFontSize())
 
-lightThemeBtn.addEventListener("click", () => {
+lightThemeBtn.addEventListener("click", () =>
   doChooseTheme(themeBtns, lightThemeBtn)
-})
+)
 
-darkThemeBtn.addEventListener("click", () => {
-  doChooseTheme(themeBtns, darkThemeBtn)
-})
+darkThemeBtn.addEventListener("click", () => doChooseTheme(themeBtns, darkThemeBtn))
 
-autoThemeBtn.addEventListener("click", () => {
-  doChooseTheme(themeBtns, autoThemeBtn)
-})
+autoThemeBtn.addEventListener("click", () => doChooseTheme(themeBtns, autoThemeBtn))
 
 window.addEventListener("DOMContentLoaded", () => {
   doShuffleArray(questions)
@@ -181,19 +177,3 @@ function doShowQuestion(index) {
     }
   }
 }
-
-function doShuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[array[i], array[j]] = [array[j], array[i]]
-  }
-  return array
-}
-
-// function doChooseFontSize() {
-//   const selectedSize = prompt("Choose a font size: 9 – 18")
-//   const parsedSize = parseInt(selectedSize)
-//   if (parsedSize >= 9 && parsedSize <= 18) {
-//     document.body.style.fontSize = `${parsedSize}px`
-//   }
-// }
