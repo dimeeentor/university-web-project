@@ -1,6 +1,6 @@
 :root {
   --font-color-dark: #333;
-  --font-color-light: #eee;
+  --font-color-light: #ccc;
   --border-color: #555;
   --border-width: 0.5px;
   --header-border: #555;
@@ -179,7 +179,7 @@ a:hover {
   body {
     background-color: #131313;
     color-scheme: dark;
-    color: #ccc;
+    color: var(--font-color-light);
   }
 
   header {
@@ -187,7 +187,7 @@ a:hover {
   }
 
   a {
-    color: #ccc;
+    color: var(--font-color-light);
   }
 
   .poster {
