@@ -1,9 +1,19 @@
+:root {
+  --font-color-dark: #333;
+  --font-color-light: #eee;
+  --border-color: #555;
+  --border-width: 0.5px;
+  --header-border: #555;
+  --background-color-dark: #333;
+  --body-background-color: #fafafa;
+}
+
 /* Global Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  accent-color: #131313;
+  accent-color: #333;
 }
 
 html {
@@ -17,14 +27,16 @@ html {
     padding: 8px 16px;
     width: 60px;
     border: none;
-    color: #ccc;
+    color: var(--font-color-light);
     font-size: 13px;
     cursor: pointer;
-    background-color: #555;
+    background-color: #333;
+    opacity: 0.5;
+    transition: .3s ease;
 
-    &.active {
-      color: #fafafa;
-      background-color: #333;
+    &.active,
+    &:hover {
+      opacity: 1;
     }
   }
 }
@@ -36,15 +48,18 @@ body {
   &.light-theme {
     background-color: #fafafa;
     color-scheme: light;
-    color: #131313;
+    color: var(--font-color-dark);
 
     header {
       background-color: rgba(255, 255, 255, 0.85);
-      border-bottom-color: #555;
     }
 
     a {
-      color: #131313;
+      color: var(--font-color-dark);
+    }
+
+    .current-question {
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 4px 0px;
     }
 
     .poster {
@@ -55,15 +70,26 @@ body {
   &.dark-theme {
     background-color: #131313;
     color-scheme: dark;
-    color: #ccc;
+    color: var(--font-color-light);
 
     header {
       background-color: rgba(19, 19, 19, 0.85);
-      border-bottom-color: #333;
     }
 
     a {
-      color: #ccc;
+      color: var(--font-color-light);
+    }
+
+    .current-question {
+      border: var(--border-width) solid var(--border-color);
+    }
+
+    #check-btn {
+      background-color: var(--background-color-dark);
+    }
+
+    #answer-input:focus-within {
+      border: var(--border-color) dashed var(--border-width);
     }
 
     .poster {
@@ -84,7 +110,7 @@ header {
   align-items: center;
   width: 100%;
   height: 60px;
-  border-bottom: 0.5px solid #555;
+  border-bottom: var(--border-width) solid var(--header-border);
   background-color: rgba(255, 255, 255, 0.85);
   transition: .3s ease;
 }
@@ -104,10 +130,16 @@ nav {
   margin-right: 65px;
   padding: 8px 16px;
   border: none;
-  color: #fff;
+  color: var(--font-color-light);
   font-size: 13px;
   cursor: pointer;
-  background-color: #333;
+  background-color: var(--background-color-dark);
+  opacity: 0.85;
+  transition: .3s ease;
+}
+
+#change-font-size:hover {
+  opacity: 1;
 }
 
 ul {
@@ -119,13 +151,13 @@ ul {
 
 a {
   opacity: 0.85;
-  color: #131313;
+  color: var(--font-color-dark);
   text-decoration: none;
   transition: .3s ease;
+}
 
-  &:hover {
-    opacity: 1;
-  }
+a:hover {
+  opacity: 1;
 }
 
 /* Dark Mode Styles */
@@ -138,16 +170,10 @@ a {
 
   header {
     background-color: rgba(19, 19, 19, 0.85);
-    border-bottom-color: #333;
   }
 
   a {
     color: #ccc;
-  }
-
-  .film {
-    box-shadow: none;
-    border-color: #444;
   }
 
   .poster {
@@ -156,46 +182,32 @@ a {
 
   /* Quiz Styles */
   .current-question {
-    border-color: #555;
-    box-shadow: none;
+    border-color: var(--border-color);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px;
   }
 
   #check-btn {
-    border: 1px solid #555 !important;
+    background-color: var(--background-color-dark) !important;
   }
 
   #answer-input:focus {
-    border: #555 dashed 0.5px;
-  }
-
-  .correct-answer {
-    box-shadow: 0 0 60px rgba(52, 199, 89, 0.6);
-  }
-
-  .incorrect-answer {
-    box-shadow: 0 0 60px rgba(255, 59, 48, 0.6);
+    border: var(--border-color) dashed var(--border-width);
   }
 }
 
 /* Light Mode Styles */
 @media (prefers-color-scheme: light) {
   body {
-    background-color: #fafafa;
+    background-color: var(--body-background-color);
     color-scheme: light;
-    color: #131313;
+    color: var(--font-color-dark);
   }
 
   header {
     background-color: rgba(255, 255, 255, 0.85);
-    border-bottom-color: #555;
   }
 
   a {
-    color: #131313;
-  }
-
-  .film {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    border-color: #555;
+    color: var(--font-color-dark);
   }
 }
