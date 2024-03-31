@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +11,7 @@ html {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* Theme Switcher */
 .theme-switcher {
   button {
     padding: 8px 16px;
@@ -27,6 +29,7 @@ html {
   }
 }
 
+/* Body Styles */
 body {
   transition: .3s ease;
 
@@ -69,6 +72,7 @@ body {
   }
 }
 
+/* Header Styles */
 header {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -124,6 +128,7 @@ a {
   }
 }
 
+/* Dark Mode Styles */
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #131313;
@@ -172,6 +177,7 @@ a {
   }
 }
 
+/* Light Mode Styles */
 @media (prefers-color-scheme: light) {
   body {
     background-color: #fafafa;

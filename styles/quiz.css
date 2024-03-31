@@ -49,10 +49,10 @@ footer {
   font-size: 13px;
   cursor: pointer;
   background-color: #131313;
+}
 
-  &:hover {
-    opacity: 1;
-  }
+.current-question #check-btn:hover {
+  opacity: 1;
 }
 
 .input-mode::before {
@@ -66,11 +66,11 @@ footer {
   border: 0.5px solid #131313;
   font-size: 14.5px;
   letter-spacing: 0.0125em;
+}
 
-  &:focus {
-    border: #131313 dashed 0.5px;
-    outline: none;
-  }
+#answer-input:focus {
+  border: #131313 dashed 0.5px;
+  outline: none;
 }
 
 .correct-answer {

@@ -5,40 +5,40 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
+}
 
-  .film {
-    display: grid;
-    grid-template-columns: 300px 200px;
-    justify-content: space-between;
-    padding-left: 12px;
-    border: 0.7px solid #555;
+.films .film {
+  display: grid;
+  grid-template-columns: 300px 200px;
+  justify-content: space-between;
+  padding-left: 12px;
+  border: 0.7px solid #555;
+}
 
-    h2 {
-      margin: 18px 0 12px 0;
-    }
+.films .film h2 {
+  margin: 18px 0 12px 0;
+}
 
-    strong {
-      font-weight: 600;
-    }
+.films .film strong {
+  font-weight: 600;
+}
 
-    .info {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      letter-spacing: 0.0125ch;
-      line-height: 120%;
-    }
-  }
+.films .film .info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  letter-spacing: 0.0125ch;
+  line-height: 120%;
 }
 
 .poster {
   width: 100%;
   height: 300px;
   transition: .3s ease;
+}
 
-  img {
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
-  }
+.poster img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
 }
