@@ -23,8 +23,6 @@ lightThemeBtn.addEventListener("click", () =>
 darkThemeBtn.addEventListener("click", () => doChooseTheme(themeBtns, darkThemeBtn))
 autoThemeBtn.addEventListener("click", () => doChooseTheme(themeBtns, autoThemeBtn))
 
-document.body.classList.add(`${currentTheme}-theme`)
-
 /**
  * Toggles the theme based on the clicked button and applies it to the document body.
  * @param {NodeList} btns - The list of buttons.

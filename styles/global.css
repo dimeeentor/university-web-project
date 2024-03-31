@@ -6,6 +6,7 @@
   --header-border: #555;
   --background-color-dark: #333;
   --body-background-color: #fafafa;
+  --header-height: 60px;
 }
 
 /* Global Styles */
@@ -109,7 +110,7 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 60px;
+  height: var(--header-height);
   border-bottom: var(--border-width) solid var(--header-border);
   background-color: rgba(255, 255, 255, 0.85);
   transition: .3s ease;
@@ -125,7 +126,8 @@ nav {
   transition: .3s ease;
 }
 
-#change-font-size {
+#change-font-size,
+#send-feedback {
   width: 108px;
   margin-right: 65px;
   padding: 8px 16px;
@@ -139,6 +141,18 @@ nav {
 }
 
 #change-font-size:hover {
+  opacity: 1;
+}
+
+#send-feedback {
+  width: fit-content;
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  margin: 0;
+}
+
+#send-feedback:hover {
   opacity: 1;
 }
 
