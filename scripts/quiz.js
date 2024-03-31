@@ -1,19 +1,12 @@
-import { doChooseFontSize, doChooseTheme, doShuffleArray } from "./utils.js"
 import { questions } from "./questions.js"
+import { doChooseFontSize, doShuffleArray } from "./utils.js"
 
 const changeFontBtn = document.getElementById("change-font-size")
-const themeBtns = document.querySelectorAll(".theme-switcher > button")
-const lightThemeBtn = document.querySelector(".light")
-const darkThemeBtn = document.querySelector(".dark")
-const autoThemeBtn = document.querySelector(".auto")
-
 const currentQuestion = document.querySelector(".current-question")
 const question = document.getElementById("question")
 const score = document.getElementById("score")
-
 const answerBtns = document.querySelectorAll('input[name="answer"]')
 const answers = document.querySelectorAll(".answer")
-
 const answerInput = document.getElementById("answer-input")
 const checkBtn = document.getElementById("check-btn")
 
@@ -21,21 +14,10 @@ let currentQuestionIndex = 0
 let scoreNumber = 0
 
 checkBtn.addEventListener("click", () => doNextQuestion())
-
 answerInput.addEventListener("keyup", ({ key }) => {
-  if (key === "Enter") doNextQuestion()
+  key === "Enter" ? doNextQuestion() : null
 })
-
 changeFontBtn.addEventListener("click", () => doChooseFontSize())
-
-lightThemeBtn.addEventListener("click", () =>
-  doChooseTheme(themeBtns, lightThemeBtn)
-)
-
-darkThemeBtn.addEventListener("click", () => doChooseTheme(themeBtns, darkThemeBtn))
-
-autoThemeBtn.addEventListener("click", () => doChooseTheme(themeBtns, autoThemeBtn))
-
 window.addEventListener("DOMContentLoaded", () => {
   doShuffleArray(questions)
   doShowQuestion(currentQuestionIndex)
