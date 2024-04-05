@@ -1,0 +1,10 @@
+<!ELEMENT films (film+)>
+<!ELEMENT film (title, director, year, (actor | actress)*, synopsis?)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT director (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+<!ELEMENT actor (#PCDATA)>
+<!ELEMENT actress (#PCDATA)>
+<!ELEMENT synopsis (#PCDATA)>
+
+<!ATTLIST film nolanFilm (yes | influenced) #REQUIRED>

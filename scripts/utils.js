@@ -1,15 +1,4 @@
 /**
- * Prompts the user to choose a font size and applies it to the document body.
- */
-function doChooseFontSize() {
-  const selectedSize = prompt("Choose a font size: 9 – 18")
-  const parsedSize = parseInt(selectedSize)
-  if (parsedSize >= 9 && parsedSize <= 18) {
-    document.body.style.fontSize = `${parsedSize}px`
-  }
-}
-
-/**
  * Shuffles the elements in the given array using the Fisher-Yates algorithm.
  * @param {Array} array - The array to be shuffled.
  * @returns {Array} - The shuffled array.
@@ -22,4 +11,15 @@ function doShuffleArray(array) {
   return array
 }
 
-export { doChooseFontSize, doShuffleArray }
+/**
+ * Retrieves the correct answer(s) for a given question.
+ *
+ * @param {Array} questions - The array of questions.
+ * @param {number} currentQuestionIndex - The index of the current question.
+ * @returns {Array} - The array of correct answers for the current question.
+ */
+function getCorrectAnswer(questions, currentQuestionIndex) {
+  return questions[currentQuestionIndex].answers.filter((answer) => answer.isCorrect)
+}
+
+export { doShuffleArray, getCorrectAnswer }

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="./styles/styles.css"?>
+<!DOCTYPE films SYSTEM "nolanfilms.dtd">
+
+<films>
+	<film nolanFilm="yes">
+		<title>Interstellar</title>
+		<director>Christopher Nolan</director>
+		<year>2014</year>
+		<actor>Matthew McConaughey</actor>
+		<actress>Anne Hathaway</actress>
+		<actor>Jessica Chastain</actor>
+		<synopsis>A team of astronauts travels through a wormhole in search of a new home for humanity.</synopsis>
+	</film>
+	<film nolanFilm="yes">
+		<title>Memento</title>
+		<director>Christopher Nolan</director>
+		<year>2000</year>
+		<actor>Guy Pearce</actor>
+		<actor>Joe Pantoliano</actor>
+		<synopsis>A man with short-term memory loss tries to find his wife's killer.</synopsis>
+	</film>
+	<film nolanFilm="yes">
+		<title>The Dark Knight</title>
+		<director>Christopher Nolan</director>
+		<year>2008</year>
+		<actor>Christian Bale</actor>
+		<actor>Heath Ledger</actor>
+		<actress>Maggie Gyllenhaal</actress>
+		<synopsis>Batman faces off against the Joker in a battle for Gotham City.</synopsis>
+	</film>
+	<film nolanFilm="yes">
+		<title>Inception</title>
+		<director>Christopher Nolan</director>
+		<year>2010</year>
+		<actor>Leonardo DiCaprio</actor>
+		<actor>Elliot Page</actor>
+		<synopsis>A professional thief who steals corporate secrets through use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</synopsis>
+	</film>
+	<film nolanFilm="yes">
+		<title>Dunkirk</title>
+		<director>Christopher Nolan</director>
+		<year>2017</year>
+		<actor>Fionn Whitehead</actor>
+		<actor>Harry Styles</actor>
+		<actor>Cillian Murphy</actor>
+		<synopsis>British soldiers attempt to evacuate from Dunkirk during World War II.</synopsis>
+	</film>
+	<film nolanFilm="yes">
+		<title>Tenet</title>
+		<director>Christopher Nolan</director>
+		<year>2020</year>
+		<actor>John David Washington</actor>
+		<actress>Elizabeth Debicki</actress>
+		<actor>Robert Pattinson</actor>
+		<synopsis>A secret agent manipulates the flow of time to prevent a global catastrophe.</synopsis>
+	</film>
+	<film nolanFilm="yes">
+		<title>The Batman (2022)</title>
+		<director>Matt Reeves</director>
+		<year>2022</year>
+		<actor>Robert Pattinson</actor>
+		<actress>Zoë Kravitz</actress>
+		<synopsis>Batman investigates a series of murders linked to The Riddler.</synopsis>
+	</film>
+	<film nolanFilm="influenced">
+		<title>Blade Runner 2049 (2017)</title>
+		<director>Denis Villeneuve</director>
+		<year>2017</year>
+		<actor>Ryan Gosling</actor>
+		<actress>Ana de Armas</actress>
+		<synopsis>A new blade runner uncovers a long-buried secret that could destabilize society.</synopsis>
+	</film>
+	<film nolanFilm="influenced">
+		<title>Arrival (2016)</title>
+		<director>Denis Villeneuve</director>
+		<year>2016</year>
+		<actress>Amy Adams</actress>
+		<actor>Jeremy Renner</actor>
+		<synopsis>Linguists attempt to communicate with aliens to avert a global conflict.</synopsis>
+	</film>
+	<film nolanFilm="influenced">
+		<title>Predestination (2014)</title>
+		<director>The Spierig Brothers</director>
+		<year>2014</year>
+		<actor>Ethan Hawke</actor>
+		<actress>Sarah Snook</actress>
+		<synopsis>A temporal agent pursues a criminal across time through a series of predestination paradoxes.</synopsis>
+	</film>
+</films>

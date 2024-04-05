@@ -1,7 +1,6 @@
 import { questions } from "./questions.js"
-import { doChooseFontSize, doShuffleArray } from "./utils.js"
+import { doShuffleArray, getCorrectAnswer } from "./utils.js"
 
-const changeFontBtn = document.getElementById("change-font-size")
 const currentQuestion = document.querySelector(".current-question")
 const question = document.getElementById("question")
 const score = document.getElementById("score")
@@ -17,30 +16,26 @@ checkBtn.addEventListener("click", () => doNextQuestion())
 answerInput.addEventListener("keyup", ({ key }) => {
   key === "Enter" ? doNextQuestion() : null
 })
-changeFontBtn.addEventListener("click", () => doChooseFontSize())
+
 window.addEventListener("DOMContentLoaded", () => {
   doShuffleArray(questions)
   doShowQuestion(currentQuestionIndex)
 })
 
 function doNextQuestion() {
+  const answerStatus = typeof result === "string" ? false : result
   const currentQuestion = questions[currentQuestionIndex]
   const result = doCheckAnswer(currentQuestion.type)
-  const answerStatus = typeof result === "string" ? false : result
 
   doAddProperClass(answerStatus)
   doRemoveProperClass(600)
 
-  switch (result) {
-    case true:
+  if (result !== "empty") {
+    if (result) {
       score.textContent = `Score: ${++scoreNumber}`
-      doIncrementQuestionIndex()
-      return doShowQuestion(currentQuestionIndex)
-    case false:
-      doIncrementQuestionIndex()
-      return doShowQuestion(currentQuestionIndex)
-    case "empty":
-      return doShowQuestion(currentQuestionIndex)
+    }
+    doIncrementQuestionIndex()
+    return doShowQuestion(currentQuestionIndex)
   }
 }
 
@@ -58,9 +53,7 @@ function doCheckAnswer(type) {
 function doCheckMultipleAnswers() {
   const checkedCheckboxes = document.querySelectorAll('input[name="answer"]:checked')
   const selectedAnswers = Array.from(checkedCheckboxes).map((el) => el.value)
-  const correctAnswers = questions[currentQuestionIndex].answers.filter(
-    (answer) => answer.isCorrect
-  )
+  const correctAnswers = getCorrectAnswer(questions, currentQuestionIndex)
   const isCorrect = selectedAnswers.length === correctAnswers.length
   checkedCheckboxes.forEach((el) => (el.checked = false))
 
@@ -71,9 +64,7 @@ function doCheckMultipleAnswers() {
 function doCheckSingleAnswer() {
   const checkedRadio = document.querySelector('input[name="answer"]:checked')
   const selectedAnswer = checkedRadio?.value
-  const correctAnswer = questions[currentQuestionIndex].answers.filter(
-    (answer) => answer.isCorrect
-  )[0].answer
+  const correctAnswer = getCorrectAnswer(questions, currentQuestionIndex)[0].answer
   const isCorrect = correctAnswer === selectedAnswer
 
   if (!checkedRadio) return "empty"
@@ -85,15 +76,30 @@ function doCheckSingleAnswer() {
 
 function doCheckInputAnswer() {
   const possibleAnswer = answerInput.value.toLowerCase().trim()
-  const correctAnswer = questions[currentQuestionIndex].answers
-    .filter((answer) => answer.isCorrect)[0]
-    .answer.toLowerCase()
+  const correctAnswer = getCorrectAnswer(
+    questions,
+    currentQuestionIndex
+  )[0].answer.toLowerCase()
   const isCorrect = possibleAnswer === correctAnswer
 
-  doAddProperStyles(false)
-
   if (!possibleAnswer) return "empty"
-  else return isCorrect
+  else {
+    doToggleInputMode(false)
+    return isCorrect
+  }
+}
+
+function doToggleInputMode(isActive) {
+  answers.forEach((el) => el.classList.toggle("input-mode", isActive))
+  answerInput.style.padding = isActive ? "0 12px" : "0"
+  answerInput.style.width = isActive ? "100%" : "0"
+  answerInput.style.opacity = isActive ? "1" : "0"
+  if (isActive) {
+    answerInput.focus()
+  } else {
+    answerInput.value = ""
+    answerInput.blur()
+  }
 }
 
 function doIncrementQuestionIndex() {
@@ -122,23 +128,6 @@ function doRemoveProperClass(after) {
   }, after)
 }
 
-function doAddProperStyles(isActive) {
-  if (isActive) {
-    answers.forEach((el) => el.classList.add("input-mode"))
-    answerInput.style.padding = "0 12px"
-    answerInput.style.width = "100%"
-    answerInput.style.opacity = "1"
-    answerInput.focus()
-  } else {
-    answers.forEach((el) => el.classList.remove("input-mode"))
-    answerInput.style.padding = "0"
-    answerInput.style.width = "0"
-    answerInput.style.opacity = "0"
-    answerInput.value = ""
-    answerInput.blur()
-  }
-}
-
 function doShowQuestion(index) {
   const currentQuestion = questions[index]
   question.textContent = currentQuestion.question
@@ -152,7 +141,7 @@ function doShowQuestion(index) {
         break
       case "input":
         answerBtns[i].type = "hidden"
-        doAddProperStyles(true)
+        doToggleInputMode(true)
         break
       case "single":
         answerBtns[i].type = "radio"
