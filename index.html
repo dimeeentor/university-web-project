@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="./styles/home.css" />
     <link rel="stylesheet" href="./styles/global.css" />
     <script type="module" src="./scripts/home/home.js"></script>
-    <script type="module" src="./scripts/miscellaneous/theme.js"></script>
-    <script type="module" src="./scripts/miscellaneous/chooseFontSize.js"></script>
+    <script type="module" src="./scripts/utils/theme.js"></script>
+    <script type="module" src="./scripts/utils/chooseFontSize.js"></script>
   </head>
   <body>
     <header>
@@ -20,7 +20,9 @@
         <ul>
           <li><a href="./index.html">Home</a></li>
           <li><a href="./content/form/quiz.html">Quiz</a></li>
-          <li><a href="../../xml/xhtml/films.xhtml">Old Website</a></li>
+          <li>
+            <a href="../../xml/xhtml/films.xhtml" target="_blank">Old Website</a>
+          </li>
         </ul>
         <aside class="theme-switcher">
           <button class="light">Light</button>
@@ -40,10 +42,11 @@
             <strong>Actors:</strong> Matthew McConaughey, Anne Hathaway, Jessica
             Chastain
           </p>
-          <p class="Synopsis">
+          <p class="synopsis">
             <strong>Synopsis:</strong> A team of astronauts travels through a
             wormhole in search of a new home for humanity.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img
@@ -53,6 +56,9 @@
           />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img
               loading="lazy"
@@ -124,15 +130,19 @@
           <p class="director"><strong>Director:</strong> Christopher Nolan</p>
           <p class="year"><strong>Year:</strong> 2000</p>
           <p class="actors"><strong>Actors:</strong> Guy Pearce, Joe Pantoliano</p>
-          <p class="Synopsis">
+          <p class="synopsis">
             <strong>Synopsis:</strong> A man with short-term memory loss tries to
             find his wife's killer.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img loading="lazy" src="./images/memento.jpg" alt="Memento Poster" />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img loading="lazy" src="./images/memento.jpg" alt="Memento Poster" />
             <div class="main-info">
@@ -193,10 +203,11 @@
           <p class="actors">
             <strong>Actors:</strong> Christian Bale, Heath Ledger, Maggie Gyllenhaal
           </p>
-          <p class="Synopsis">
+          <p class="synopsis">
             <strong>Synopsis:</strong> Batman faces off against the Joker in a battle
             for Gotham City.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img
@@ -206,6 +217,9 @@
           />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img
               loading="lazy"
@@ -278,16 +292,20 @@
           <p class="actors">
             <strong>Actors:</strong> Leonardo DiCaprio, Elliot Page
           </p>
-          <p class="Synopsis">
+          <p class="synopsis">
             <strong>Synopsis:</strong> A professional thief who steals corporate
             secrets through use of dream-sharing technology is given the inverse task
             of planting an idea into the mind of a C.E.O.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img loading="lazy" src="./images/inception.jpg" alt="Inception Poster" />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img
               loading="lazy"
@@ -357,15 +375,19 @@
           <p class="actors">
             <strong>Actors:</strong> Fionn Whitehead, Harry Styles, Cillian Murphy
           </p>
-          <p class="Synopsis">
+          <p class="synopsis">
             <strong>Synopsis:</strong> British soldiers attempt to evacuate from
             Dunkirk during World War II.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img loading="lazy" src="./images/dunkirk.jpg" alt="Dunkirk Poster" />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img loading="lazy" src="./images/dunkirk.jpg" alt="Dunkirk Poster" />
             <div class="main-info">
@@ -441,11 +463,15 @@
             <strong>Synopsis:</strong> A secret agent manipulates the flow of time to
             prevent a global catastrophe.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img loading="lazy" src="./images/tenet.jpg" alt="Tenet Poster" />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img loading="lazy" src="./images/tenet.jpg" alt="Tenet Poster" />
             <div class="main-info">
@@ -516,6 +542,7 @@
             <strong>Synopsis:</strong> Batman investigates a series of murders linked
             to The Riddler.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img
@@ -525,6 +552,9 @@
           />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img
               loading="lazy"
@@ -598,6 +628,7 @@
             <strong>Synopsis:</strong> A new blade runner uncovers a long-buried
             secret that could destabilize society.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img
@@ -607,6 +638,9 @@
           />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img
               loading="lazy"
@@ -685,6 +719,7 @@
             <strong>Synopsis:</strong> Linguists attempt to communicate with aliens
             to avert a global conflict.
           </p>
+          <button class="show-details">Show Details</button>
         </div>
         <picture class="poster">
           <img
@@ -694,6 +729,9 @@
           />
         </picture>
         <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
           <div class="dive-deeper">
             <img
               loading="lazy"
@@ -761,12 +799,10 @@
       </section>
     </main>
     <footer class="footer">
-      <form action="">
-        <!-- TODO: add some more fields to this form -->
+      <form>
         <a id="send-feedback" href="mailto:dimeeentor@gmail.com">Send Feedback</a>
       </form>
-
-      <script type="module" src="./scripts/miscellaneous/timer.js"></script>
+      <script type="module" src="./scripts/utils/timer.js"></script>
     </footer>
   </body>
 </html>

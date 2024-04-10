@@ -1,8 +1,6 @@
 <!-- Main Contributor: Dmytro HONCHARENKO -->
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="./styles/styles.css"?>
+<?xml-stylesheet href="./styles.css" type="text/css" ?>
 <!DOCTYPE films SYSTEM "nolanfilms.dtd">
-
 <films>
 	<film nolanFilm="yes">
 		<title>Interstellar</title>
