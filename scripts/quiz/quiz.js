@@ -95,6 +95,7 @@ function doToggleInputMode(isActive) {
   answerInput.style.padding = isActive ? "0 12px" : "0"
   answerInput.style.width = isActive ? "100%" : "0"
   answerInput.style.opacity = isActive ? "1" : "0"
+  answerInput.style.marginRight = isActive ? "8px" : "0"
   if (isActive) {
     answerInput.focus()
   } else {

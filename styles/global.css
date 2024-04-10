@@ -10,12 +10,17 @@
 :root {
   --font-color-dark: #333;
   --font-color-light: #ccc;
-  --border-color: #555;
-  --border-width: 0.5px;
-  --header-border: #555;
+
   --background-color-dark: #333;
   --body-background-color: #fafafa;
+
+  --header-border: #555;
   --header-height: 60px;
+
+  --border-width: 0.5px;
+  --border-color: #555;
+  --border-radius-s: 6px;
+  --border-radius-l: 12px;
 }
 
 /* Global Styles */
@@ -35,13 +40,14 @@ html {
 .theme-switcher {
   button {
     padding: 8px 16px;
-    width: 60px;
     border: none;
     color: var(--font-color-light);
     font-size: 13px;
     cursor: pointer;
-    background-color: #333;
+    background-color: var(--background-color-dark);
     opacity: 0.5;
+    border-radius: var(--border-radius-s);
+    transition: .3s ease;
 
     &.active,
     &:hover {
@@ -102,6 +108,11 @@ body {
     img {
       filter: brightness(75%);
     }
+
+    .modal {
+      background-color: var(--background-color-dark);
+      color: var(--font-color-light)
+    }
   }
 }
 
@@ -141,6 +152,8 @@ nav {
   cursor: pointer;
   background-color: var(--background-color-dark);
   opacity: 0.85;
+  border-radius: var(--border-radius-s);
+  transition: .3s ease;
 }
 
 #change-font-size:hover {

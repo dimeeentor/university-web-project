@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="../../styles/quiz.css" />
     <link rel="stylesheet" href="../../styles/global.css" />
     <title>Quiz</title>
-    <script type="module" src="../../scripts/quiz.js"></script>
-    <script type="module" src="../../scripts/theme.js"></script>
-    <script type="module" src="../../scripts/chooseFontSize.js"></script>
+    <script type="module" src="../../scripts/quiz/quiz.js"></script>
+    <script type="module" src="../../scripts/miscellaneous/theme.js"></script>
+    <script
+      type="module"
+      src="../../scripts/miscellaneous/chooseFontSize.js"
+    ></script>
   </head>
   <body>
     <header>
@@ -66,16 +69,18 @@
             </li>
           </ol>
         </section>
-        <footer>
+        <footer class="bottom-section">
           <input type="text" id="answer-input" placeholder="Answer..." />
           <button type="button" id="check-btn">Check</button>
         </footer>
       </main>
     </div>
-    <footer>
+    <footer class="footer">
       <form action="">
         <a id="send-feedback">Send Feedback</a>
       </form>
     </footer>
+
+    <script type="module" src="../../scripts/miscellaneous/timer.js"></script>
   </body>
 </html>
