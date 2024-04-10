@@ -1,3 +1,4 @@
+<!-- Main Contributor: Dmytro HONCHARENKO -->
 <!ELEMENT films (film+)>
 <!ELEMENT film (title, director, year, (actor | actress)*, synopsis?)>
 <!ELEMENT title (#PCDATA)>

@@ -1,3 +1,6 @@
+<!-- Main Contributor: Dmytro HONCHARENKO -->
+<!-- TODO: Add sources: a button with i that will trigger dialog -->
+<!-- TODO: add a toggle for every picture that will open it full screen via dialog -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,6 +9,9 @@
     <title>Nolan Films</title>
     <link rel="stylesheet" href="./styles/home.css" />
     <link rel="stylesheet" href="./styles/global.css" />
+    <script type="module" src="./scripts/home.js"></script>
+    <script type="module" src="./scripts/theme.js"></script>
+    <script type="module" src="./scripts/chooseFontSize.js"></script>
   </head>
   <body>
     <header>
@@ -16,6 +22,7 @@
         <ul>
           <li><a href="./index.html">Home</a></li>
           <li><a href="./content/form/quiz.html">Quiz</a></li>
+          <li><a href="../../xml/xhtml/films.xhtml">Old Website</a></li>
         </ul>
         <aside class="theme-switcher">
           <button class="light">Light</button>
@@ -197,10 +204,11 @@
       </section>
     </main>
     <footer>
-      <a id="send-feedback" href="mailto:dimeeentor@gmail.com">Send Feedback</a>
+      <form action="">
+        <!-- TODO: add some more fields to this form -->
+        <!-- TODO: add current data and hour -->
+        <a id="send-feedback" href="mailto:dimeeentor@gmail.com">Send Feedback</a>
+      </form>
     </footer>
-    <script type="module" src="./scripts/home.js"></script>
-    <script type="module" src="./scripts/theme.js"></script>
-    <script type="module" src="./scripts/chooseFontSize.js"></script>
   </body>
 </html>

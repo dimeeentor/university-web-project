@@ -1,3 +1,4 @@
+// Main Contributor: Dmytro HONCHARENKO
 export const questions = [
   {
     question:

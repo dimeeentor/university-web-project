@@ -1,3 +1,4 @@
+// Main Contributor: Dmytro HONCHARENKO
 import { questions } from "./questions.js"
 import { doShuffleArray, getCorrectAnswer } from "./utils.js"
 
@@ -23,9 +24,9 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 function doNextQuestion() {
-  const answerStatus = typeof result === "string" ? false : result
   const currentQuestion = questions[currentQuestionIndex]
   const result = doCheckAnswer(currentQuestion.type)
+  const answerStatus = typeof result === "string" ? false : result
 
   doAddProperClass(answerStatus)
   doRemoveProperClass(600)

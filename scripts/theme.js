@@ -1,3 +1,4 @@
+// Main Contributor: Dmytro HONCHARENKO
 const currentTheme = window.localStorage.getItem("theme")
 
 const themeBtns = document.querySelectorAll(".theme-switcher > button")

@@ -1,3 +1,4 @@
+// Main Contributor: Dmytro HONCHARENKO
 /**
  * Shuffles the elements in the given array using the Fisher-Yates algorithm.
  * @param {Array} array - The array to be shuffled.

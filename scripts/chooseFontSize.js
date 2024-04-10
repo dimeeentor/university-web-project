@@ -1,3 +1,4 @@
+// Main Contributor: Dmytro HONCHARENKO
 const changeFontBtn = document.getElementById("change-font-size")
 changeFontBtn.addEventListener("click", () => doChooseFontSize())
 

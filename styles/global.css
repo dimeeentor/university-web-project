@@ -1,3 +1,4 @@
+/* Main Contributor: Dmytro HONCHARENKO */
 /**
  * 
  * This CSS file contains global styles for the university web project.
@@ -161,7 +162,7 @@ nav {
 ul {
   display: flex;
   justify-content: space-between;
-  width: 200px;
+  width: 250px;
   list-style: none;
 }
 
