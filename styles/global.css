@@ -37,23 +37,21 @@ html {
 }
 
 /* Theme Switcher */
-.theme-switcher {
-  button {
-    padding: 8px 16px;
-    border: none;
-    color: var(--font-color-light);
-    font-size: 13px;
-    cursor: pointer;
-    background-color: var(--background-color-dark);
-    opacity: 0.5;
-    border-radius: var(--border-radius-s);
-    transition: .3s ease;
+.theme-switcher button {
+  padding: 8px 16px;
+  border: none;
+  color: var(--font-color-light);
+  font-size: 13px;
+  cursor: pointer;
+  background-color: var(--background-color-dark);
+  opacity: 0.5;
+  border-radius: var(--border-radius-s);
+  transition: opacity .3s ease;
+}
 
-    &.active,
-    &:hover {
-      opacity: 1;
-    }
-  }
+.theme-switcher button.active,
+.theme-switcher button:hover {
+  opacity: 1;
 }
 
 /* Body Styles */
@@ -153,7 +151,7 @@ nav {
   background-color: var(--background-color-dark);
   opacity: 0.85;
   border-radius: var(--border-radius-s);
-  transition: .3s ease;
+  transition: opacity .3s ease;
 }
 
 #change-font-size:hover {

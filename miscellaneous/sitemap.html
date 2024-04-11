@@ -6,11 +6,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Site Map</title>
+    <style>
+      body {
+        background-color: #fafafa;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+
+      a {
+        color: #131313;
+        opacity: 0.8;
+        transition: opacity 0.15s ease;
+      }
+
+      a:hover {
+        opacity: 1;
+      }
+
+      ul li {
+        padding: 4px 0;
+      }
+    </style>
   </head>
   <body>
-    <h1>Site Map</h1>
     <ul>
       <h2>Table of Contents:</h2>
+      <ul>
+        <h3>HTML:</h3>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../content/form/quiz.html">Quiz</a></li>
+        <li><a href="../xhtml/films.xhtml">Old Website</a></li>
+      </ul>
       <ul>
         <h3>Styles:</h3>
         <li><a href="../styles/global.css">Global Styles</a></li>
@@ -25,28 +51,25 @@
       <ul>
         <h3>Utility scripts:</h3>
         <li>
-          <a href="../scripts/miscellaneous/chooseFontSize.js"
-            >Utility Scripts (Font size)</a
-          >
+          <a href="../scripts/utils/chooseFontSize.js">Font Size</a>
         </li>
         <li>
-          <a href="../scripts/miscellaneous/theme.js">Utility Scripts (Theme)</a>
+          <a href="../scripts/utils/theme.js">Theme Picker</a>
         </li>
         <li>
-          <a href="../scripts/miscellaneous/timer.js">Utility Scripts (Timer)</a>
+          <a href="../scripts/utils/timer.js">Timer</a>
         </li>
       </ul>
       <ul>
         <h3>XML:</h3>
         <li><a href="../xml/films.xml">Films XML</a></li>
         <li><a href="../xml/nolanfilms.dtd">Nolan Films DTD</a></li>
-        <li><a href="../xml/styles/films.css">XML Styles</a></li>
+        <li><a href="../xml/styles.css">XML Styles</a></li>
       </ul>
       <ul>
-        <h3>HTML:</h3>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../content/form/quiz.html">Quiz</a></li>
-        <li><a href="../xml/xhtml/films.xhtml">Old Website</a></li>
+        <h3>XHTML:</h3>
+        <li><a href="../xhtml/films.xhtml">Films XHTML</a></li>
+        <li><a href="../xhtml/styles.css">XHTML Styles</a></li>
       </ul>
       <ul>
         <h3>Others:</h3>

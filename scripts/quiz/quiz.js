@@ -1,6 +1,6 @@
 // Main Contributor: Dmytro HONCHARENKO
 import { questions } from "./questions.js"
-import { doShuffleArray, getCorrectAnswer } from "./utils.js"
+import { doShuffleArray, getCorrectAnswer } from "./suplementary.js"
 
 const currentQuestion = document.querySelector(".current-question")
 const question = document.getElementById("question")
