@@ -15,3 +15,7 @@ La page du quiz est méticuleusement conçue avec une logique personnalisée imp
 - [Validateur CSS](https://jigsaw.w3.org/css-validator/#validate_by_input+with_options) : J'ai testé mon CSS sur ce site web et il a souligné des erreurs, notamment en raison de l'imbrication des CSS. Cependant, ci-dessous, vous pouvez voir que cette technologie est utilisable.
 - [Imbrication CSS](https://drafts.csswg.org/css-nesting/#toc) : Fonctionnalité qui permet aux règles CSS d'être imbriquées les unes dans les autres, améliorant ainsi l'organisation et la lisibilité du code.
 - [Can I Use - Imbrication](https://caniuse.com/?search=nesting) : Lien pour vérifier la compatibilité de l'imbrication CSS sur différents navigateurs et versions.
+
+<img width="1624" alt="Screenshot 2024-04-11 at 14 23 01" src="https://github.com/dimeeentor/university-web-project/assets/32683179/43356853-2148-4eb6-b0d0-6b2fd3d5bcec">
+<img width="1624" alt="Screenshot 2024-04-11 at 14 24 16" src="https://github.com/dimeeentor/university-web-project/assets/32683179/3de846af-9709-4e06-8901-2b85705b4af7">
+<img width="1624" alt="Screenshot 2024-04-11 at 14 23 04" src="https://github.com/dimeeentor/university-web-project/assets/32683179/b7ee2787-2127-4536-bc4f-59b39087cf18">
