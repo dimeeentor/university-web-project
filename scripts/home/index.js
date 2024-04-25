@@ -1,3 +1,4 @@
+// Main Contributor: Dmytro HONCHARENKO
 const films = document.querySelector(".film")
 const closeModals = document.querySelectorAll(".close-modal")
 const dialogs = document.querySelectorAll("dialog")
@@ -5,25 +6,20 @@ const showBtns = document.querySelectorAll(".show-details")
 
 showBtns.forEach((btn, index) => {
   btn.addEventListener("click", () => {
-    dialogs[index].showModal()
-    document.body.style.overflow = "hidden"
+    showDialog(index)
   })
 })
 
 dialogs.forEach((dialog) => {
   dialog.addEventListener("click", (event) => {
     if (event.target === dialog) {
-      dialog.close()
-      document.body.style.overflow = "auto"
+      closeDialog(dialog)
     }
   })
-})
 
-dialogs.forEach((dialog) => {
-  dialog.addEventListener("keydown", (event) => {
+  dialog.addEventListener("keyup", (event) => {
     if (event.key === "Escape") {
-      dialog.close()
-      document.body.style.overflow = "auto"
+      closeDialog(dialog)
     }
   })
 })
@@ -34,3 +30,11 @@ closeModals.forEach((closeModal) => {
     document.body.style.overflow = "auto"
   })
 })
+
+function showDialog(index) {
+  dialogs[index].showModal()
+}
+
+function closeDialog(dialog) {
+  dialog.close()
+}

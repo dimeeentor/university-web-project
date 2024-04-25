@@ -1,3 +1,4 @@
+// Main Contributor: Dmytro HONCHARENKO
 // Get the current date and time
 const currentDate = new Date()
 const currentHour = currentDate.getHours()

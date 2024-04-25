@@ -97,7 +97,7 @@
 
 .dive-deeper {
   display: grid;
-  grid-template-columns: 500px 500px;
+  grid-template-columns: repeat(2, 500px);
   gap: 12px;
   line-height: 1.5em;
 }
@@ -118,16 +118,11 @@
   letter-spacing: 0.0125em;
   border-radius: var(--border-radius-s);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
-  position: relative;
+  /* position: relative; */
 }
 
 .top-section p {
   padding: 4px 0;
-}
-
-.source {
-  position: absolute;
-  bottom: 12px;
 }
 
 .bottom-section {
@@ -151,10 +146,6 @@ details p {
   .dive-deeper {
     display: flex;
     flex-direction: column;
-  }
-
-  .source {
-    position: static;
   }
 
   .close-modal {
