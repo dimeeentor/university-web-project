@@ -1,3 +1,4 @@
+// Main Contributor: Dmytro HONCHARENKO
 const questions = [
   {
     question:
