@@ -1,40 +1,40 @@
 // Main Contributor: Dmytro HONCHARENKO
 document.addEventListener("DOMContentLoaded", function () {
-  const currentQuestion = document.querySelector(".current-question")
-  const question = document.getElementById("question")
-  const score = document.getElementById("score")
-  const answerBtns = document.querySelectorAll('input[name="answer"]')
-  const answers = document.querySelectorAll(".answer")
-  const answerInput = document.getElementById("answer-input")
-  const checkBtn = document.getElementById("check-btn")
+  const currentQuestion = document.querySelector(".current-question");
+  const question = document.getElementById("question");
+  const score = document.getElementById("score");
+  const answerBtns = document.querySelectorAll('input[name="answer"]');
+  const answers = document.querySelectorAll(".answer");
+  const answerInput = document.getElementById("answer-input");
+  const checkBtn = document.getElementById("check-btn");
 
-  let currentQuestionIndex = 0
-  let scoreNumber = 0
+  let currentQuestionIndex = 0;
+  let scoreNumber = 0;
 
-  checkBtn.addEventListener("click", () => doNextQuestion())
+  checkBtn.addEventListener("click", () => doNextQuestion());
   answerInput.addEventListener("keyup", ({ key }) => {
-    key === "Enter" ? doNextQuestion() : null
-  })
+    key === "Enter" ? doNextQuestion() : null;
+  });
 
-  doShuffleArray(questions)
-  doShowQuestion(currentQuestionIndex)
+  doShuffleArray(questions);
+  doShowQuestion(currentQuestionIndex);
 
   /**
    * Performs the next question logic.
    * @returns {void}
    */
   function doNextQuestion() {
-    const currentQuestion = questions[currentQuestionIndex]
-    const result = doCheckAnswer(currentQuestion.type)
-    const answerStatus = typeof result === "string" ? false : result
+    const currentQuestion = questions[currentQuestionIndex];
+    const result = doCheckAnswer(currentQuestion.type);
+    const answerStatus = typeof result === "string" ? false : result;
 
-    doAddProperClass(answerStatus)
-    doRemoveProperClass(600)
+    doAddProperClass(answerStatus);
+    doRemoveProperClass(600);
 
     if (result !== "empty") {
-      if (result) score.textContent = `Score: ${++scoreNumber}`
-      doIncrementQuestionIndex()
-      return doShowQuestion(currentQuestionIndex)
+      if (result) score.textContent = `Score: ${++scoreNumber}`;
+      doIncrementQuestionIndex();
+      return doShowQuestion(currentQuestionIndex);
     }
   }
 
@@ -46,11 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function doCheckAnswer(type) {
     switch (type) {
       case "multiple":
-        return doCheckMultipleAnswers()
+        return doCheckMultipleAnswers();
       case "input":
-        return doCheckInputAnswer()
+        return doCheckInputAnswer();
       case "single":
-        return doCheckSingleAnswer()
+        return doCheckSingleAnswer();
     }
   }
 
@@ -60,15 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function doCheckMultipleAnswers() {
     const checkedCheckboxes = document.querySelectorAll(
-      'input[name="answer"]:checked'
-    )
-    const selectedAnswers = Array.from(checkedCheckboxes).map((el) => el.value)
-    const correctAnswers = getCorrectAnswer(questions, currentQuestionIndex)
-    const isCorrect = selectedAnswers.length === correctAnswers.length
-    checkedCheckboxes.forEach((el) => (el.checked = false))
+      'input[name="answer"]:checked',
+    );
+    const selectedAnswers = Array.from(checkedCheckboxes).map((el) => el.value);
+    const correctAnswers = getCorrectAnswer(questions, currentQuestionIndex);
+    const isCorrect = selectedAnswers.length === correctAnswers.length;
+    checkedCheckboxes.forEach((el) => (el.checked = false));
 
-    if (!checkedCheckboxes.length) return "empty"
-    else return isCorrect
+    if (!checkedCheckboxes.length) return "empty";
+    else return isCorrect;
   }
 
   /**
@@ -76,15 +76,16 @@ document.addEventListener("DOMContentLoaded", function () {
    * @returns {boolean|string} Returns `true` if the selected answer is correct, `false` if it is incorrect, or `"empty"` if no answer is selected.
    */
   function doCheckSingleAnswer() {
-    const checkedRadio = document.querySelector('input[name="answer"]:checked')
-    const selectedAnswer = checkedRadio?.value
-    const correctAnswer = getCorrectAnswer(questions, currentQuestionIndex)[0].answer
-    const isCorrect = correctAnswer === selectedAnswer
+    const checkedRadio = document.querySelector('input[name="answer"]:checked');
+    const selectedAnswer = checkedRadio?.value;
+    const correctAnswer = getCorrectAnswer(questions, currentQuestionIndex)[0]
+      .answer;
+    const isCorrect = correctAnswer === selectedAnswer;
 
-    if (!checkedRadio) return "empty"
+    if (!checkedRadio) return "empty";
     else {
-      checkedRadio.checked = false
-      return isCorrect
+      checkedRadio.checked = false;
+      return isCorrect;
     }
   }
 
@@ -93,17 +94,17 @@ document.addEventListener("DOMContentLoaded", function () {
    * @returns {boolean|string} Returns "empty" if the input answer is empty, otherwise returns a boolean indicating whether the answer is correct.
    */
   function doCheckInputAnswer() {
-    const possibleAnswer = answerInput.value.toLowerCase().trim()
+    const possibleAnswer = answerInput.value.toLowerCase().trim();
     const correctAnswer = getCorrectAnswer(
       questions,
-      currentQuestionIndex
-    )[0].answer.toLowerCase()
-    const isCorrect = possibleAnswer === correctAnswer
+      currentQuestionIndex,
+    )[0].answer.toLowerCase();
+    const isCorrect = possibleAnswer === correctAnswer;
 
-    if (!possibleAnswer) return "empty"
+    if (!possibleAnswer) return "empty";
     else {
-      doToggleInputMode(false)
-      return isCorrect
+      doToggleInputMode(false);
+      return isCorrect;
     }
   }
 
@@ -113,16 +114,16 @@ document.addEventListener("DOMContentLoaded", function () {
    * @returns {void}
    */
   function doToggleInputMode(isActive) {
-    answers.forEach((el) => el.classList.toggle("input-mode", isActive))
-    answerInput.style.padding = isActive ? "0 12px" : "0"
-    answerInput.style.width = isActive ? "100%" : "0"
-    answerInput.style.opacity = isActive ? "1" : "0"
-    answerInput.style.marginRight = isActive ? "8px" : "0"
+    answers.forEach((el) => el.classList.toggle("input-mode", isActive));
+    answerInput.style.padding = isActive ? "0 12px" : "0";
+    answerInput.style.width = isActive ? "100%" : "0";
+    answerInput.style.opacity = isActive ? "1" : "0";
+    answerInput.style.marginRight = isActive ? "8px" : "0";
     if (isActive) {
-      answerInput.focus()
+      answerInput.focus();
     } else {
-      answerInput.value = ""
-      answerInput.blur()
+      answerInput.value = "";
+      answerInput.blur();
     }
   }
 
@@ -131,13 +132,13 @@ document.addEventListener("DOMContentLoaded", function () {
    * @returns {void}
    */
   function doIncrementQuestionIndex() {
-    currentQuestionIndex++
+    currentQuestionIndex++;
     if (currentQuestionIndex === questions.length) {
-      alert(`Quiz is over! Your score is: ${scoreNumber}/${length}`)
-      currentQuestionIndex = 0
-      scoreNumber = 0
-      score.textContent = "Score: 0"
-      doShuffleArray(questions)
+      alert(`Quiz is over! Your score is: ${scoreNumber}/${length}`);
+      currentQuestionIndex = 0;
+      scoreNumber = 0;
+      score.textContent = "Score: 0";
+      doShuffleArray(questions);
     }
   }
 
@@ -148,9 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function doAddProperClass(isCorrect) {
     if (isCorrect) {
-      currentQuestion.classList.add("correct-answer")
+      currentQuestion.classList.add("correct-answer");
     } else {
-      currentQuestion.classList.add("incorrect-answer")
+      currentQuestion.classList.add("incorrect-answer");
     }
   }
 
@@ -161,10 +162,10 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function doRemoveProperClass(after) {
     setTimeout(() => {
-      currentQuestion.classList.remove("correct-answer")
-      currentQuestion.classList.remove("incorrect-answer")
-    }, after)
-    clearTimeout(after)
+      currentQuestion.classList.remove("correct-answer");
+      currentQuestion.classList.remove("incorrect-answer");
+    }, after);
+    clearTimeout(after);
   }
 
   /**
@@ -173,22 +174,22 @@ document.addEventListener("DOMContentLoaded", function () {
    * @returns {void}
    */
   function doShowQuestion(index) {
-    const currentQuestion = questions[index]
-    question.textContent = currentQuestion.question
-    questionIndex.textContent = `Question #${index + 1}`
+    const currentQuestion = questions[index];
+    question.textContent = currentQuestion.question;
+    questionIndex.textContent = `Question #${index + 1}`;
     for (let i = 0; i < answers.length; i++) {
-      answers[i].textContent = currentQuestion.answers[i].answer
-      answerBtns[i].value = currentQuestion.answers[i].answer
+      answers[i].textContent = currentQuestion.answers[i].answer;
+      answerBtns[i].value = currentQuestion.answers[i].answer;
       switch (currentQuestion.type) {
         case "multiple":
-          answerBtns[i].type = "checkbox"
-          break
+          answerBtns[i].type = "checkbox";
+          break;
         case "input":
-          answerBtns[i].type = "hidden"
-          doToggleInputMode(true)
-          break
+          answerBtns[i].type = "hidden";
+          doToggleInputMode(true);
+          break;
         case "single":
-          answerBtns[i].type = "radio"
+          answerBtns[i].type = "radio";
       }
     }
   }
@@ -200,10 +201,10 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function doShuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[array[i], array[j]] = [array[j], array[i]]
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
-    return array
+    return array;
   }
 
   /**
@@ -214,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function getCorrectAnswer(questions, currentQuestionIndex) {
     return questions[currentQuestionIndex].answers.filter(
-      (answer) => answer.isCorrect
-    )
+      (answer) => answer.isCorrect,
+    );
   }
-})
+});
