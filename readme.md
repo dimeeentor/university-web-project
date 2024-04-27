@@ -1,5 +1,3 @@
-[**Lien GitHub du projet**](https://github.com/dimeeentor/university-web-project)
-
 **Thème :** Films  
 **Page Principale :** index.html  
 **Page de formulaire :** quiz.html
