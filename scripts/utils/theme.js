@@ -1,53 +1,44 @@
 // Main Contributor: Dmytro HONCHARENKO
-const currentTheme = window.localStorage.getItem("theme")
+document.addEventListener("DOMContentLoaded", function () {
+  const currentTheme = window.localStorage.getItem("theme")
+  const themeBtns = document.querySelectorAll(".theme-switcher button")
+  const currentThemeBtn = document.getElementById(`${currentTheme}`)
 
-const themeBtns = document.querySelectorAll(".theme-switcher > button")
-const lightThemeBtn = document.querySelector(".light")
-const darkThemeBtn = document.querySelector(".dark")
-const autoThemeBtn = document.querySelector(".auto")
+  // Set the default theme to "auto" if it is not already set
+  if (!currentTheme) window.localStorage.setItem("theme", "auto")
 
-// Set the default theme to "auto" if it is not already set
-if (!currentTheme) {
-  window.localStorage.setItem("theme", "auto")
-}
+  themeBtns.forEach((button) => {
+    if (button.textContent.toLowerCase() === currentTheme) {
+      button.classList.add("active")
+    }
 
-// Add the "active" class to the button that matches the current theme
-themeBtns.forEach((button) => {
-  if (button.textContent.toLowerCase() === currentTheme) {
-    button.classList.add("active")
-  }
-})
+    button.addEventListener("click", () => {
+      doToggleTheme(themeBtns, button)
+    })
+  })
 
-lightThemeBtn.addEventListener("click", () =>
-  doToggleTheme(themeBtns, lightThemeBtn)
-)
-darkThemeBtn.addEventListener("click", () => doToggleTheme(themeBtns, darkThemeBtn))
-autoThemeBtn.addEventListener("click", () => doToggleTheme(themeBtns, autoThemeBtn))
-
-window.addEventListener("DOMContentLoaded", () => {
-  const currentThemeBtn = document.querySelector(`.${currentTheme}`)
   doToggleTheme(themeBtns, currentThemeBtn)
-})
 
-/**
- * Sets the theme for the document body.
- * @param {string} theme - The theme to be set.
- */
-function setTheme(theme) {
-  document.body.classList.remove("light-theme", "dark-theme", "auto-theme")
-  document.body.classList.add(`${theme}-theme`)
-}
-
-/**
- * Toggles the theme based on the clicked button and applies it to the document body.
- * @param {NodeList} btns - The list of buttons.
- * @param {HTMLElement} clickedBtn - The clicked button.
- */
-function doToggleTheme(btns, clickedBtn) {
-  for (const btn of btns) {
-    btn.classList.remove("active")
+  /**
+   * Sets the theme for the document body.
+   * @param {string} theme - The theme to be set.
+   */
+  function setTheme(theme) {
+    document.body.classList.remove("light-theme", "dark-theme", "auto-theme")
+    document.body.classList.add(`${theme}-theme`)
+    window.localStorage.setItem("theme", theme)
   }
-  clickedBtn.classList.add("active")
-  setTheme(clickedBtn.textContent.toLowerCase())
-  window.localStorage.setItem("theme", clickedBtn.textContent.toLowerCase())
-}
+
+  /**
+   * Toggles the theme based on the clicked button and applies it to the document body.
+   * @param {NodeList} btns - The list of buttons.
+   * @param {HTMLElement} clickedBtn - The clicked button.
+   */
+  function doToggleTheme(btns, clickedBtn) {
+    for (const btn of btns) {
+      btn.classList.remove("active")
+    }
+    clickedBtn.classList.add("active")
+    setTheme(clickedBtn.textContent.toLowerCase())
+  }
+})

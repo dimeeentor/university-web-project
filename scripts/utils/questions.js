@@ -1,5 +1,4 @@
-// Main Contributor: Dmytro HONCHARENKO
-export const questions = [
+const questions = [
   {
     question:
       "What is the title of the film where a team of astronauts travels through a wormhole in search of a new home for humanity?",

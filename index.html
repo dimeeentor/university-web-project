@@ -7,9 +7,10 @@
     <title>Nolan Films</title>
     <link rel="stylesheet" href="./styles/home.css" />
     <link rel="stylesheet" href="./styles/global.css" />
-    <script type="module" src="./scripts/home/index.js"></script>
-    <script type="module" src="./scripts/utils/theme.js"></script>
-    <script type="module" src="./scripts/utils/chooseFontSize.js"></script>
+    <script src="./scripts/home/index.js"></script>
+    <script src="./scripts/utils/theme.js"></script>
+    <script src="./scripts/utils/chooseFontSize.js"></script>
+    <script src="./scripts/utils/timer.js"></script>
   </head>
   <body>
     <header>
@@ -26,9 +27,9 @@
           <li><a href="./miscellaneous/sitemap.html">Site Map</a></li>
         </ul>
         <aside class="theme-switcher">
-          <button class="light">Light</button>
-          <button class="dark">Dark</button>
-          <button class="auto">Auto</button>
+          <button id="light">Light</button>
+          <button id="dark">Dark</button>
+          <button id="auto">Auto</button>
         </aside>
       </nav>
     </header>
@@ -798,10 +799,106 @@
           </div>
         </dialog>
       </section>
+      <!-- Predestination -->
+      <section class="film">
+        <div class="info">
+          <h2>Predestination</h2>
+          <p class="director">
+            <strong>Director:</strong> Michael Spierig, Peter Spierig
+          </p>
+          <p class="year"><strong>Year:</strong> 2014</p>
+          <p class="actors"><strong>Actors:</strong> Ethan Hawke, Sarah Snook</p>
+          <p class="synopsis">
+            <strong>Synopsis:</strong> A temporal agent embarks on a final
+            time-traveling mission to stop an elusive criminal known as the Fizzle
+            Bomber.
+          </p>
+          <button class="show-details">Show Details</button>
+        </div>
+        <picture class="poster">
+          <img
+            loading="lazy"
+            src="./images/predestination.jpg"
+            alt="Predestination (2014) Poster"
+          />
+        </picture>
+        <dialog class="modal">
+          <picture class="close-modal">
+            <img src="./images/close.svg" alt="close-modal" />
+          </picture>
+          <div class="dive-deeper">
+            <img
+              loading="lazy"
+              src="./images/predestination.jpg"
+              alt="Predestination (2014) Poster"
+            />
+            <div class="main-info">
+              <div class="top-section">
+                <h1>Main Information</h1>
+                <p><strong>Directed by:</strong> Michael Spierig, Peter Spierig</p>
+                <p><strong>Written by:</strong> Michael Spierig, Peter Spierig</p>
+                <p>
+                  <strong>Produced by:</strong> Michael Spierig, Peter Spierig, Paddy
+                  McDonald, Tim McGahan
+                </p>
+                <p>
+                  <strong>Starring:</strong> Ethan Hawke, Sarah Snook, Noah Taylor
+                </p>
+                <p><strong>Cinematography:</strong> Ben Nott</p>
+                <p><strong>Edited by:</strong> Matt Villa</p>
+                <p><strong>Music by:</strong> Peter Spierig</p>
+                <p>
+                  <strong>Production Companies:</strong> Blacklab Entertainment,
+                  Screen Australia, Screen Queensland
+                </p>
+                <p>
+                  <strong>Distributed by:</strong> Pinnacle Films (Australia), Stage
+                  6 Films (United States)
+                </p>
+                <p>
+                  <strong>Release Dates:</strong> August 28, 2014 (Melbourne
+                  International Film Festival), January 9, 2015 (United States)
+                </p>
+                <p><strong>Running Time:</strong> 97 minutes</p>
+                <p><strong>Country:</strong> Australia</p>
+                <p><strong>Language:</strong> English</p>
+                <p><strong>Budget:</strong> $5.4 million</p>
+                <p><strong>Box Office:</strong> $5.4 million</p>
+                <p class="source"><strong>Source:</strong> Wikipedia</p>
+              </div>
+            </div>
+            <div class="bottom-section">
+              <h1>Description</h1>
+              <div class="description">
+                "Predestination" is a 2014 Australian science fiction thriller film
+                directed by Michael and Peter Spierig, starring Ethan Hawke and Sarah
+                Snook. The film follows a temporal agent who embarks on a final
+                time-traveling mission to stop an elusive criminal known as the
+                Fizzle Bomber. However, during his pursuit, he faces mind-bending
+                twists and revelations that challenge his perception of reality. The
+                film's intricate narrative and thought-provoking themes have drawn
+                comparisons to classic time-travel stories while offering its own
+                unique take on the genre. "Predestination" explores themes of
+                identity, destiny, and the consequences of altering the past, keeping
+                audiences engaged with its unpredictable plot twists and compelling
+                performances. The film received positive reviews for its originality,
+                storytelling, and strong performances, particularly from Sarah Snook
+                in a breakout role. Although it achieved modest commercial success,
+                "Predestination" has gained a cult following and remains a standout
+                entry in the time-travel genre.
+              </div>
+            </div>
+          </div>
+        </dialog>
+      </section>
     </main>
     <footer class="footer">
       <form>
-        <a id="send-feedback" href="mailto:test@gmail.com">Send Feedback</a>
+        <a
+          id="send-feedback"
+          href="mailto:test@gmail.com?subject=Feedback. Nolan website&body=I would like to share my feedback about the website."
+          >Send Feedback</a
+        >
       </form>
     </footer>
   </body>

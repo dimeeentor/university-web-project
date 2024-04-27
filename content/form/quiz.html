@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="../../styles/quiz.css" />
     <link rel="stylesheet" href="../../styles/global.css" />
     <title>Quiz</title>
-    <script type="module" src="../../scripts/quiz/index.js"></script>
-    <script type="module" src="../../scripts/utils/theme.js"></script>
-    <script type="module" src="../../scripts/utils/chooseFontSize.js"></script>
-    <script type="module" src="../../scripts/utils/timer.js"></script>
+    <script src="../../scripts/quiz/index.js"></script>
+    <script src="../../scripts/utils/questions.js"></script>
+    <script src="../../scripts/utils/theme.js"></script>
+    <script src="../../scripts/utils/chooseFontSize.js"></script>
+    <script src="../../scripts/utils/timer.js"></script>
   </head>
   <body>
     <header>
@@ -27,9 +28,9 @@
           <li><a href="../../miscellaneous/sitemap.html">Site Map</a></li>
         </ul>
         <aside class="theme-switcher">
-          <button class="light">Light</button>
-          <button class="dark">Dark</button>
-          <button class="auto">Auto</button>
+          <button id="light">Light</button>
+          <button id="dark">Dark</button>
+          <button id="auto">Auto</button>
         </aside>
       </nav>
     </header>

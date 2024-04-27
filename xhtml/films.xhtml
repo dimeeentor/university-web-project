@@ -1,20 +1,33 @@
 <!-- Main Contributor: Dmytro HONCHARENKO -->
-<!DOCTYPE html>
-<?xml-stylesheet href="../styles/global.css" ?>
-<?xml-stylesheet href="styles.css" ?>
-<xhtml lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Old Website</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../styles/global.css" />
+    <script src="../scripts/utils/theme.js"></script>
+    <script src="../scripts/utils/chooseFontSize.js"></script>
+    <script src="../scripts/utils/timer.js"></script>
   </head>
   <body>
     <header>
       <nav>
+        <aside class="accessibility-font-size">
+          <button type="button" id="change-font-size">
+            <span>Font Size</span>
+          </button>
+        </aside>
         <ul>
-          <li>
-            <a href="../index.html">Home</a>
-          </li>
+          <li><a href="../index.html">Home</a></li>
           <li><a href="../content/form/quiz.html">Quiz</a></li>
+          <li><a href="../xhtml/films.xhtml">Old Website</a></li>
+          <li><a href="../miscellaneous/sitemap.html">Site Map</a></li>
         </ul>
+        <aside class="theme-switcher">
+          <button id="light">Light</button>
+          <button id="dark">Dark</button>
+          <button id="auto">Auto</button>
+        </aside>
       </nav>
     </header>
     <div class="films">
@@ -22,8 +35,8 @@
         <div class="top-section">
           <div class="general-info">
             <h2 class="title">Interstellar</h2>
-            <p class="director">Director: Christopher Nolan</p>
-            <p class="year">Year: 2014</p>
+            <p class="director">Christopher Nolan</p>
+            <p class="year">2014</p>
             <p class="actor">Matthew McConaughey</p>
             <p class="actress">Anne Hathaway</p>
             <p class="actress">Jessica Chastain</p>
@@ -169,5 +182,14 @@
         </p>
       </div>
     </div>
+    <footer class="footer">
+      <form>
+        <a
+          id="send-feedback"
+          href="mailto:test@gmail.com?subject=Feedback.%20Nolan%20website&amp;body=I%20would%20like%20to%20share%20my%20feedback%20about%20the%20website."
+          >Send Feedback</a
+        >
+      </form>
+    </footer>
   </body>
-</xhtml>
+</html>

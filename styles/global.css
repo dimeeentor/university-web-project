@@ -12,6 +12,7 @@
   --font-color-light: #eee;
 
   --background-color-dark: #333;
+  --background-color-darker: #131313;
   --body-background-color: #fafafa;
 
   --header-border: #555;
@@ -69,7 +70,7 @@ body {
   }
 
   &.dark-theme {
-    background-color: #131313;
+    background-color: var(--background-color-darker);
     color-scheme: dark;
     color: var(--font-color-light);
 
@@ -79,10 +80,6 @@ body {
 
     a {
       color: var(--font-color-light);
-    }
-
-    .current-question {
-      border: var(--border-width) solid var(--border-color);
     }
 
     #check-btn {
@@ -98,7 +95,7 @@ body {
     }
 
     .modal {
-      background-color: var(--background-color-dark);
+      background-color: var(--background-color-darker);
       color: var(--font-color-light)
     }
 
@@ -186,6 +183,10 @@ a:hover {
   opacity: 1;
 }
 
+.modal::backdrop {
+  background-color: rgba(19, 19, 19, 0.55);
+}
+
 #send-feedback {
   width: fit-content;
   position: fixed;
@@ -203,7 +204,7 @@ a:hover {
 /* Dark Mode Styles */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #131313;
+    background-color: var(--background-color-darker);
     color-scheme: dark;
     color: var(--font-color-light);
   }
@@ -220,6 +221,14 @@ a:hover {
     filter: brightness(75%);
   }
 
+  .modal {
+    background-color: var(--background-color-darker);
+  }
+
+  .close-modal {
+    filter: invert(100%);
+  }
+
   /* Quiz Styles */
   .current-question {
     border-color: var(--border-color);
@@ -232,14 +241,6 @@ a:hover {
 
   #answer-input:focus {
     border: var(--border-color) dashed var(--border-width);
-  }
-
-  .modal {
-    background-color: var(--background-color-dark);
-  }
-
-  .close-modal {
-    filter: invert(100%);
   }
 }
 
@@ -257,5 +258,9 @@ a:hover {
 
   a {
     color: var(--font-color-dark);
+  }
+
+  .modal {
+    background-color: var(--body-background-color);
   }
 }
